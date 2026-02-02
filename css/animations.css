@@ -1,0 +1,392 @@
+/* ============================================
+   ANIMATIONS
+   Motion System, Scroll Reveals, Interactions
+   ============================================ */
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for children */
+.reveal-container .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-container .reveal:nth-child(2) { transition-delay: 100ms; }
+.reveal-container .reveal:nth-child(3) { transition-delay: 200ms; }
+.reveal-container .reveal:nth-child(4) { transition-delay: 300ms; }
+.reveal-container .reveal:nth-child(5) { transition-delay: 400ms; }
+.reveal-container .reveal:nth-child(6) { transition-delay: 500ms; }
+
+/* Different reveal directions */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   PAGE LOAD ANIMATIONS
+   ============================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hero Load Sequence */
+.hero-greeting {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 200ms both;
+}
+
+.hero-name {
+  animation: fadeUp 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 300ms both;
+}
+
+.hero-role {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 400ms both;
+}
+
+.hero-description {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 500ms both;
+}
+
+.hero-cta {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms both;
+}
+
+.bento-item:nth-child(1) {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 700ms both;
+}
+
+.bento-item:nth-child(2) {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 800ms both;
+}
+
+.bento-item:nth-child(3) {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 900ms both;
+}
+
+.bento-item:nth-child(4) {
+  animation: fadeUp 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 1000ms both;
+}
+
+/* ============================================
+   HOVER MICRO-INTERACTIONS
+   ============================================ */
+
+/* Card Hover */
+.project-card,
+.case-study-nav-item {
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover,
+.case-study-nav-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Button Hover Effects */
+.button {
+  transition: transform 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button:hover {
+  transform: scale(1.02);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+/* Link Underline Animation */
+.nav-link::after,
+.link-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-link:hover::after,
+.link-arrow:hover::after {
+  width: 100%;
+}
+
+/* Skill Tag Hover */
+.skill-tag {
+  transition: transform 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+}
+
+/* Social Link Hover */
+.social-link {
+  transition: color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   NAVIGATION ANIMATIONS
+   ============================================ */
+
+/* Nav Hide/Show on Scroll */
+.nav {
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* Mobile Menu Animation */
+.nav-menu {
+  transition: opacity 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              visibility 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hamburger Animation */
+.nav-toggle-line {
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   SPECIALTY ANIMATIONS
+   ============================================ */
+
+/* Availability Dot Pulse */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.availability-dot {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient Text Animation (Optional) */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Focus Ring Animation */
+:focus-visible {
+  animation: focus-ring 200ms ease-out;
+}
+
+@keyframes focus-ring {
+  from {
+    outline-offset: 4px;
+  }
+  to {
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+/* Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text-light) var(--color-bg-alt);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .availability-dot {
+    animation: none;
+  }
+  
+  .hero-greeting,
+  .hero-name,
+  .hero-role,
+  .hero-description,
+  .hero-cta,
+  .bento-item {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   UTILITY ANIMATIONS
+   ============================================ */
+
+/* Fade In Utility */
+.animate-fade-in {
+  animation: fadeIn 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Slide Up Utility */
+.animate-slide-up {
+  animation: fadeUp 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Delay Utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* Duration Utilities */
+.duration-fast { animation-duration: 200ms; }
+.duration-normal { animation-duration: 300ms; }
+.duration-slow { animation-duration: 500ms; }
+.duration-slower { animation-duration: 800ms; }

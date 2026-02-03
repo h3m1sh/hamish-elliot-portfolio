@@ -41,7 +41,7 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
-              Available for work — Mt Roskill, Auckland
+              Available for work
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
@@ -63,9 +63,9 @@ const Hero = () => {
             </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
-              Dynamic developer with a diverse background in customer service, operations, and project management. 
-              50,000 lines of production code across 3 Shopify stores. Strong communication, problem-solving, 
-              and a proven ability to learn quickly and deliver results under pressure.
+              Shopify developer with 50,000+ lines of production code across 3 live stores. 
+              Specialized in B2B wholesale, complex cart systems, and accessible UX. 
+              Based in Auckland, New Zealand.
             </p>
 
             <div className="flex flex-wrap gap-4">

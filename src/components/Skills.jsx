@@ -1,5 +1,5 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, GraduationCap, Calendar } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
@@ -31,14 +31,12 @@ const Skills = () => {
       ],
     },
     {
-      title: 'Tools & Soft Skills',
+      title: 'Tools',
       skills: [
         { name: 'Git/GitHub', level: 'Advanced' },
         { name: 'Shopify CLI', level: 'Expert' },
         { name: 'Cursor IDE', level: 'Advanced' },
         { name: 'Jira', level: 'Intermediate' },
-        { name: 'Customer Service', level: 'Expert' },
-        { name: 'Team Collaboration', level: 'Advanced' },
       ],
     },
   ];
@@ -60,50 +58,16 @@ const Skills = () => {
     {
       role: 'E-commerce Developer',
       company: 'Blue Sports',
-      location: 'Auckland',
+      location: 'Auckland, NZ',
       period: '2024 – Present',
-      description: 'Maintaining 3 Shopify stores with 50k+ lines of custom code. Built cart drawer systems, quick order flows, and B2B wholesale features. Reduced order time by 70% for wholesale customers.',
-      type: 'tech',
+      description: 'Maintaining 3 Shopify stores with 50k+ lines of custom code. Built cart drawer systems, quick order flows, and B2B wholesale features. Reduced order time by 70% for wholesale customers and increased AOV by 15% across stores.',
     },
     {
       role: 'Junior Developer Intern',
       company: 'SebData',
-      location: 'Auckland',
+      location: 'Auckland, NZ',
       period: 'May – July 2025',
       description: 'Built Pathway+ dashboard app using PHP/Symfony. Implemented skill tracking, career roadmaps, and progress visualization. Completed 10-week mentored internship as part of Level 6 qualification.',
-      type: 'tech',
-    },
-    {
-      role: 'Bartender',
-      company: 'Pointers Nightclub',
-      location: 'Auckland',
-      period: 'Sept 2025 – Present',
-      description: 'Prepare and serve beverages in fast-paced nightclub environment. Provide attentive customer service and maintain high standards of cleanliness. Work collaboratively during busy nights and events.',
-      type: 'service',
-    },
-    {
-      role: 'Handyman',
-      company: 'Performance Cleaners NZ',
-      location: 'Auckland',
-      period: 'Dec 2024 – Present',
-      description: 'Independently managed physical projects including gardening, landscaping, and cleaning. Operated tools safely and maintained consistent communication with business owner.',
-      type: 'physical',
-    },
-    {
-      role: 'Customer Service Team Member',
-      company: 'The Warehouse',
-      location: 'Mt Roskill',
-      period: 'Nov 2022 – Oct 2023',
-      description: 'Provided customer support in high-volume retail environment. Processed payments, returns, and online orders using POS systems. Collaborated with shift managers to resolve issues.',
-      type: 'service',
-    },
-    {
-      role: 'Café Assistant',
-      company: 'Kreem Café',
-      location: 'Mt Roskill',
-      period: 'July 2022 – Jan 2023',
-      description: 'Delivered high-quality customer service in busy café environment. Maintained hygiene and presentation standards. Supported team during peak hours.',
-      type: 'service',
     },
   ];
 
@@ -135,8 +99,8 @@ const Skills = () => {
             Skills & Experience
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            18-year-old developer with a diverse background in customer service, operations, and project management. 
-            Strong communication, problem-solving skills, and a proven ability to learn quickly and deliver results under pressure.
+            Shopify developer with production experience across 3 live stores. 
+            Strong problem-solving skills and proven ability to learn quickly and deliver results.
           </p>
         </div>
 
@@ -177,35 +141,21 @@ const Skills = () => {
               {workExperience.map((job, index) => (
                 <div 
                   key={index} 
-                  className="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700 last:border-transparent pb-2"
+                  className="relative pl-6 border-l-2 border-blue-200 dark:border-blue-800 last:border-transparent pb-2"
                 >
-                  <div className={`absolute -left-2 top-0 w-4 h-4 rounded-full border-4 ${
-                    job.type === 'tech' 
-                      ? 'bg-blue-500 border-blue-100 dark:border-blue-900' 
-                      : 'bg-gray-400 border-gray-100 dark:border-gray-800'
-                  }`} />
+                  <div className="absolute -left-2 top-0 w-4 h-4 bg-blue-500 rounded-full border-4 border-blue-100 dark:border-blue-900" />
                   
-                  <div className="mb-1 flex flex-wrap items-center gap-2">
+                  <div className="mb-1">
                     <span className="text-sm text-blue-600 dark:text-blue-400 font-medium flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {job.period}
                     </span>
-                    {job.type === 'tech' && (
-                      <span className="px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
-                        Tech
-                      </span>
-                    )}
                   </div>
                   
                   <h4 className="text-lg font-bold text-gray-900 dark:text-white">{job.role}</h4>
                   
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mb-1 flex items-center gap-1">
-                    {job.company}
-                    <span className="text-gray-400">•</span>
-                    <span className="text-sm flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {job.location}
-                    </span>
+                  <p className="text-gray-600 dark:text-gray-400 font-medium mb-1">
+                    {job.company} • {job.location}
                   </p>
                   
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{job.description}</p>

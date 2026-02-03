@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, MapPin } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ const Contact = () => {
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
               I'm currently available for freelance Shopify development and 
-              full-time e-commerce engineering roles. Located in Mt Roskill, Auckland — 
+              full-time e-commerce engineering roles. Based in Auckland, New Zealand — 
               open to remote work and local opportunities.
             </p>
 
@@ -51,26 +51,13 @@ const Contact = () => {
                 </div>
               </a>
 
-              <a
-                href="tel:+64226247151"
-                className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all group hover:scale-[1.02]"
-              >
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Phone className="w-6 h-6 text-green-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Phone</p>
-                  <p className="font-semibold text-gray-900 dark:text-white">022 624 7151</p>
-                </div>
-              </a>
-
               <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
-                  <p className="font-semibold text-gray-900 dark:text-white">Mt Roskill, Auckland, NZ</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">Auckland, New Zealand</p>
                 </div>
               </div>
 

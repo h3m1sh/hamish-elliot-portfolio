@@ -1,67 +1,16 @@
-# Hamish Elliot — Portfolio
+# React + Vite
 
-E-commerce frontend engineer specializing in Shopify. Building high-conversion experiences with clean code and thoughtful UX.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-**Live Site:** [hamish-elliot-portfolio.vercel.app](https://hamish-elliot-portfolio.vercel.app)
+Currently, two official plugins are available:
 
-## About
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-I'm an 18-year-old developer based in New Zealand, currently working part-time at Blue Sports where I maintain 3 Shopify stores. This portfolio showcases my production work — 50,000 lines of code across live e-commerce sites.
+## React Compiler
 
-## Featured Projects
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- **TeamLine Quick Order** — B2B wholesale ordering system with backorder support
-- **Cart Drawer System** — Accessible cart UX across 3 stores  
-- **Pathway+** — Full-stack career platform with AI integration
-- **Custom PHP Framework** — Built from scratch to understand internals
+## Expanding the ESLint configuration
 
-## Tech Stack
-
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-- **Backend:** PHP, Symfony, Node.js
-- **E-commerce:** Shopify, Liquid
-- **Database:** MongoDB, MySQL
-- **Tools:** Git, Webpack, Figma
-
-## Local Development
-
-```bash
-# Clone
-git clone https://github.com/h3m1sh/hamish-elliot-portfolio.git
-cd hamish-elliot-portfolio
-
-# Serve (any static server)
-npx serve
-# or
-python -m http.server 8000
-```
-
-Visit `http://localhost:8000` to view the site.
-
-## Deployment
-
-This site is deployed on **Vercel** with automatic deploys on push to main.
-
-To deploy your own version:
-
-1. Fork this repository
-2. Import to Vercel (or GitHub Pages, Netlify, etc.)
-3. Deploy!
-
-## Design Principles
-
-- **Performance:** No frameworks, minimal JavaScript, optimized assets
-- **Accessibility:** Semantic HTML, ARIA labels, keyboard navigation, reduced motion support
-- **Responsive:** Mobile-first, works on all devices
-- **Clean:** Minimal design that lets work speak for itself
-
-## Credits
-
-Designed and built by Hamish Elliot.
-
-- Typography: [Inter](https://rsms.me/inter/) by Rasmus Andersson
-- Icons: Custom SVG
-
----
-
-**Let's connect:** hamish.elliot5@gmail.com
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Send, MapPin } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,11 +7,18 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now, just open email client
-    window.location.href = `mailto:hamish.elliot5@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${formData.message}`;
+    setIsSubmitting(true);
+    
+    // Open email client with pre-filled content
+    const subject = `Portfolio Contact from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    window.location.href = `mailto:hamish.elliot5@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    setTimeout(() => setIsSubmitting(false), 1000);
   };
 
   return (
@@ -26,13 +33,14 @@ const Contact = () => {
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
               I'm currently available for freelance Shopify development and 
-              full-time e-commerce engineering roles. Let's discuss your project.
+              full-time e-commerce engineering roles. Located in Mt Roskill, Auckland — 
+              open to remote work and local opportunities.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <a
                 href="mailto:hamish.elliot5@gmail.com"
-                className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group"
+                className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all group hover:scale-[1.02]"
               >
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Mail className="w-6 h-6 text-blue-600" />
@@ -43,9 +51,22 @@ const Contact = () => {
                 </div>
               </a>
 
+              <a
+                href="tel:+64226247151"
+                className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all group hover:scale-[1.02]"
+              >
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Phone className="w-6 h-6 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Phone</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">022 624 7151</p>
+                </div>
+              </a>
+
               <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-green-600" />
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
@@ -53,12 +74,12 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 pt-4">
                 <a
                   href="https://github.com/h3m1sh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-3 bg-gray-900 dark:bg-gray-800 text-white rounded-xl hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-3 bg-gray-900 dark:bg-gray-800 text-white rounded-xl hover:bg-gray-800 dark:hover:bg-gray-700 transition-all hover:scale-105"
                 >
                   <Github className="w-5 h-5" />
                   <span className="font-medium">GitHub</span>
@@ -67,7 +88,7 @@ const Contact = () => {
                   href="https://linkedin.com/in/hamishelliot"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all hover:scale-105"
                 >
                   <Linkedin className="w-5 h-5" />
                   <span className="font-medium">LinkedIn</span>
@@ -130,9 +151,10 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-blue-600/25"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-blue-600/25 hover:scale-[1.02] disabled:scale-100"
               >
-                Send Message
+                {isSubmitting ? 'Opening Email...' : 'Send Message'}
                 <Send className="w-5 h-5" />
               </button>
             </form>

@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { Moon, Sun } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Initialize dark mode from localStorage or system preference
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -11,6 +21,32 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Apply dark class based on state
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    console.log('Toggle clicked! Current:', isDarkMode, '→ New:', newDarkMode);
+    setIsDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      console.log('✅ Dark mode ON - dark class added');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      console.log('☀️ Light mode ON - dark class removed');
+    }
+    console.log('HTML element classes:', document.documentElement.className);
+  };
 
   const navLinks = [
     { name: 'Work', href: '#work' },
@@ -47,32 +83,53 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-5 relative flex flex-col justify-between">
-              <span
-                className={`block h-0.5 bg-current transition-transform duration-300 ${
-                  isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span
-                className={`block h-0.5 bg-current transition-opacity duration-300 ${
-                  isMobileMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`block h-0.5 bg-current transition-transform duration-300 ${
-                  isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
-            </div>
-          </button>
+          {/* Mobile Menu Button & Dark Mode Toggle */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Dark Mode Toggle - Mobile */}
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+            
+            {/* Hamburger Menu */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-5 relative flex flex-col justify-between">
+                <span
+                  className={`block h-0.5 bg-current transition-transform duration-300 ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 bg-current transition-opacity duration-300 ${
+                    isMobileMenuOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 bg-current transition-transform duration-300 ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
